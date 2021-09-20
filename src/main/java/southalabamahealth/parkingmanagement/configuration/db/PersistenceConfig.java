@@ -1,4 +1,4 @@
-package southalabamahealth.parkingmanagement.configuration.swagger;
+package southalabamahealth.parkingmanagement.configuration.db;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -27,7 +27,7 @@ import java.util.Properties;
 public class PersistenceConfig {
 
     private static final String[] ENTITY_PACKAGES = {
-            "net.petrikainulainen.springdata.jpa.todo"
+            "southalabamahealth.parkingmanagement.entity"
     };
 
     private static final String PROPERTY_NAME_DB_DRIVER_CLASS = "db.driver";
