@@ -12,12 +12,15 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import southalabamahealth.parkingmanagement.models.User;
 import southalabamahealth.parkingmanagement.models.UserWarnings;
+import southalabamahealth.parkingmanagement.repository.UserDetailsRepository;
+import southalabamahealth.parkingmanagement.repository.UserWarningsRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -33,6 +36,9 @@ public class UserWarningsApiController  {
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
+
+    @Autowired
+    private UserWarningsRepository userWarningsRepository ;
 
     @org.springframework.beans.factory.annotation.Autowired
     public UserWarningsApiController(ObjectMapper objectMapper, HttpServletRequest request) {

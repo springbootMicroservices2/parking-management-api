@@ -1,7 +1,6 @@
 package southalabamahealth.parkingmanagement.entity;
 
 import lombok.Data;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,11 +8,12 @@ import java.time.ZonedDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "parking-management.parking_user_table")
+@Table(name = "parking_user_table")
 @Data
 public final  class UserDetails  implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name="ID")
     private Long id;
 
     @Column(name = "FIRST_NAME",length = 45, nullable = false)
@@ -48,11 +48,12 @@ public final  class UserDetails  implements Serializable {
    //@Type(type = "org.jadira.usertype.dateandtime.threeten.PersistentZonedDateTime")
     private ZonedDateTime  updateDate;
 
-/*    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "userId",orphanRemoval = true, fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-    private Set<UserWarnings> userWarnings;*/
+    private Set<UserWarnings> userWarnings;
 
-
-
+    @OneToMany(mappedBy = "userId",orphanRemoval = true, fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private Set<UserVehicleEntity> userVehicleEntity;
 
 }

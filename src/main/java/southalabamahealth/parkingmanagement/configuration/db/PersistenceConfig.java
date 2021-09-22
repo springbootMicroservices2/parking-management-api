@@ -39,7 +39,7 @@ public class PersistenceConfig {
     private static final String PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
     private static final String PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY = "hibernate.ejb.naming_strategy";
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
-
+    private static final String PROPERTY_NAME_HIBERNATE_USE_NEW_ID = "hibernate.use-new-id-generator-mappings";
     /**
      * Creates and configures the HikariCP datasource bean.
      * @param env   The runtime environment of  our application.
@@ -90,7 +90,7 @@ public class PersistenceConfig {
         //If the value of this property is true, Hibernate will use prettyprint
         //when it writes SQL to the console.
         jpaProperties.put(PROPERTY_NAME_HIBERNATE_FORMAT_SQL, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_FORMAT_SQL));
-
+        jpaProperties.put(PROPERTY_NAME_HIBERNATE_USE_NEW_ID, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_USE_NEW_ID));
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
 
         return entityManagerFactoryBean;

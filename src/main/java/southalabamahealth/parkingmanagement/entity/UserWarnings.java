@@ -10,12 +10,13 @@ import java.sql.Blob;
 import java.time.ZonedDateTime;
 
 @Entity
-@Table(name = "parking-management.parking_user_warning")
+@Table(name = "parking_user_warning")
 @Data
 public class UserWarnings  implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="ID")
     private Long id;
 
     @Column(name = "COMMENTS",length = 45)
@@ -37,10 +38,9 @@ public class UserWarnings  implements Serializable {
     //@Type(type = "org.jadira.usertype.dateandtime.threeten.PersistentZonedDateTime")
     private ZonedDateTime  updateDate;
 
-   /* @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "USER_ID", nullable = false)
-    private UserDetails user;*/
+    @Column(name="USER_ID",nullable = false)
+    private Integer userId;
 
-    @JsonProperty("LOCATION")
+    @Column(name ="LOCATION")
     private String location = null;
 }
